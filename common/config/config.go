@@ -8,9 +8,11 @@ import (
 )
 
 type Config struct {
+	DeviceName    string
 	LocalAddr     string
 	ServerAddr    string
 	CIDR          string
+	IPv6CIDR	  string
 	Key           string
 	Protocol      string
 	DNS           string

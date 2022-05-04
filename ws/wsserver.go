@@ -62,6 +62,34 @@ func StartServer(config config.Config) {
 		io.WriteString(w, resp)
 	})
 
+	http.HandleFunc("/register/prefix/ipv4", func(w http.ResponseWriter, r *http.Request) {
+		if !checkPermission(w, r, config) {
+			return
+		}
+		_, ipv4Net, err := net.ParseCIDR(config.CIDR)
+		var resp string
+		if(err != nil) {
+			resp = "error"
+		} else {
+			resp = ipv4Net.String()
+		}
+		io.WriteString(w, resp)
+	})
+
+	http.HandleFunc("/register/prefix/ipv6", func(w http.ResponseWriter, r *http.Request) {
+		if !checkPermission(w, r, config) {
+			return
+		}
+		_, ipv6Net, err := net.ParseCIDR(config.IPv6CIDR)
+		var resp string
+		if(err != nil) {
+			resp = "error"
+		} else {
+			resp = ipv6Net.String()
+		}
+		io.WriteString(w, resp)
+	})
+
 	http.HandleFunc("/register/delete/ip", func(w http.ResponseWriter, r *http.Request) {
 		if !checkPermission(w, r, config) {
 			return

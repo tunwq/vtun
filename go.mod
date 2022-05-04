@@ -2,6 +2,8 @@ module github.com/net-byte/vtun
 
 go 1.18
 
+replace github.com/net-byte/vtun => /root/go/src/vtun
+
 require (
 	github.com/gobwas/ws v1.1.0
 	github.com/inhies/go-bytesize v0.0.0-20210819104631-275770b98743
